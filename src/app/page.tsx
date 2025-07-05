@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { createClient } from '@supabase/supabase-js';
 
 const sections = [
   { id: "couple", label: <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg> },
@@ -634,35 +635,69 @@ function WishesSection() {
   const [address, setAddress] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // Load wishes dari localStorage saat mount
+  // Supabase client
+  const supabase = createClient(
+    'https://uatbllwdtjtbgtraqxmw.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdGJsbHdkdGp0Ymd0cmFxeG13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3Mjg0MDcsImV4cCI6MjA2NzMwNDQwN30.mRNAop44hKzeqflo6HSyzBxpV9ZmbvT_UNR9r4OFUK8'
+  );
+
+  // Ambil wishes dari Supabase saat mount
   useEffect(() => {
-    const stored = localStorage.getItem('wedding_wishes');
-    if (stored) setWishes(JSON.parse(stored));
+    const fetchWishes = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('wishes')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (!error && data) {
+        setWishes((data as SupabaseWish[]).map((w) => ({
+          name: w.name,
+          address: w.address,
+          message: w.message,
+          time: new Date(w.created_at).getTime(),
+        })));
+      }
+      setLoading(false);
+    };
+    fetchWishes();
   }, []);
 
-  // Simpan wishes ke localStorage setiap kali berubah
-  useEffect(() => {
-    localStorage.setItem('wedding_wishes', JSON.stringify(wishes));
-  }, [wishes]);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!name.trim() || !message.trim()) {
       setError('Full Name and Message are required.');
       return;
     }
     setError('');
-    const newWish = {
+    setLoading(true);
+    const { error } = await supabase.from('wishes').insert({
       name: name.trim(),
       address: address.trim(),
       message: message.trim(),
-      time: Date.now(),
-    };
-    setWishes([newWish, ...wishes]);
-    setName('');
-    setAddress('');
-    setMessage('');
+    });
+    if (error) {
+      setError('Gagal mengirim ucapan. Coba lagi nanti.');
+    } else {
+      // Ambil ulang wishes setelah insert
+      const { data } = await supabase
+        .from('wishes')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (data) {
+        setWishes((data as SupabaseWish[]).map((w) => ({
+          name: w.name,
+          address: w.address,
+          message: w.message,
+          time: new Date(w.created_at).getTime(),
+        })));
+      }
+      setName('');
+      setAddress('');
+      setMessage('');
+    }
+    setLoading(false);
   }
 
   return (
@@ -698,14 +733,17 @@ function WishesSection() {
             <button
               type="submit"
               className="mt-2 bg-black text-[#f7f0e9] rounded-lg py-3 font-bold text-lg uppercase tracking-wider transition duration-400 ease-in-out hover:bg-gray-900 focus:outline-none"
+              disabled={loading}
             >
-              KIRIM SEKARANG
+              {loading ? 'MENGIRIM...' : 'KIRIM SEKARANG'}
             </button>
           </form>
         </div>
         {/* Kanan: Daftar Ucapan */}
         <div className="flex-1 flex flex-col gap-4 max-h-[32rem] overflow-y-auto pr-2">
-          {wishes.length === 0 ? (
+          {loading ? (
+            <div className="text-[#b8a99a] font-serif italic text-center mt-12">Memuat ucapan...</div>
+          ) : wishes.length === 0 ? (
             <div className="text-[#b8a99a] font-serif italic text-center mt-12">Belum ada ucapan, jadilah yang pertama!</div>
           ) : (
             wishes.map((wish, idx) => (
@@ -728,6 +766,13 @@ type Wish = {
   address: string;
   message: string;
   time: number;
+};
+
+type SupabaseWish = {
+  name: string;
+  address: string;
+  message: string;
+  created_at: string;
 };
 
 function ClosingSection() {
@@ -757,7 +802,7 @@ function ClosingSection() {
             <ul className="list-disc list-inside text-base font-serif text-gray-300 pl-2">
               <li>Keluarga Besar Bapak Irman</li>
               <li>Keluarga Besar Zainal</li>
-              <li>DLL</li>
+            
             </ul>
           </div>
           {/* Ucapan Penutup & Logo */}
