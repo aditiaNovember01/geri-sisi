@@ -7,12 +7,14 @@ function getNamaFromQuery() {
   return params.get("nama") || "";
 }
 
-export default function ShareToWA() {
-  const [nama, setNama] = useState("");
+export default function ShareToWA({ initialNama = "" }: { initialNama?: string }) {
+  const [nama, setNama] = useState(initialNama);
 
   useEffect(() => {
-    setNama(getNamaFromQuery());
-  }, []);
+    if (!initialNama) {
+      setNama(getNamaFromQuery());
+    }
+  }, [initialNama]);
 
   const templatePesan = `Assalamu'alaikum Wr. Wb.\n\nDengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i {nama} untuk menghadiri pernikahan kami:\n\nGery & Sisi\nJumat, 1 Agustus 2025\n\nUntuk informasi lebih lanjut, silakan buka undangan digital kami di:\n{url}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.`;
 

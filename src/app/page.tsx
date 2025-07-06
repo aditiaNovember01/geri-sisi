@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { createClient } from '@supabase/supabase-js';
 
 const sections = [
@@ -270,7 +271,7 @@ export default function Home() {
                 <div className="text-2xl md:text-3xl font-bold serif mb-1">
                   <span className="font-playfair">Geri Afria Irman, S. Pd</span>
                 </div>
-                <div className="text-center text-base text-[#5c4634] mb-2">Putra dari (Alm) Bapak Irman & Ibu Dariharyeti<br />Alamat: Koto Pulai, Barung Barung Belantai, Pesisir Selatan</div>
+                <div className="text-center text-base text-[#5c4634] mb-2">Putra dari (Alm) Bapak Irman & Ibu  Dahri haryati<br />Alamat: Koto Pulai, Barung Barung Belantai, Pesisir Selatan</div>
               </div>
                   {/* Bride */}
               <div className="flex flex-col items-center bg-white/70 rounded-3xl p-6" data-aos="fade-up">
@@ -366,7 +367,7 @@ export default function Home() {
                   <img src="/images/slide1.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="/images/slide2.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
+                  <img src="/images/bg.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
                 </SwiperSlide>
               </Swiper>
               
@@ -778,39 +779,85 @@ type SupabaseWish = {
 function ClosingSection() {
   return (
     <section className="w-full py-0 px-0 bg-[#1E1E1E] flex flex-col items-center" data-aos="fade-in">
-      <div className="w-full max-w-5xl flex flex-col md:flex-row min-h-[28rem] rounded-3xl overflow-hidden shadow-xl">
-        {/* Kiri: Gambar pasangan */}
-        <div className="relative flex-1 min-h-[18rem] md:min-h-[28rem] h-full">
-          <img
-            src="/images/slide1.jpeg"
-            alt="Pasangan di pantai"
-            className="w-full h-full object-cover object-center min-h-[18rem] md:min-h-[28rem]"
-            style={{ minHeight: '100%' }}
-          />
-          <div className="absolute inset-0 bg-black/30" />
+      <div className="w-full max-w-5xl flex flex-col gap-8 min-h-[28rem] rounded-3xl overflow-hidden shadow-xl bg-[#1E1E1E] p-8 md:p-12">
+        {/* Dua kolom keluarga */}
+        <div className="flex flex-col md:flex-row gap-8 w-full justify-center">
+          {/* Keluarga Pria */}
+          <div className="flex-1">
+            <div className="text-lg md:text-xl font-bold serif mb-2 text-white text-center md:text-left">Keluarga Besar Mempelai Pria</div>
+            <div className="text-sm md:text-base text-gray-300 mb-3 text-center md:text-left">Dengan hormat, turut mengundang keluarga besar berikut:</div>
+            <ol className="list-decimal list-inside text-base font-serif text-gray-300 pl-2 space-y-1 mb-6">
+              <li>Alm.Abbas rajo lelo / Almh.Raminis (kakek/nenek)</li>
+              <li>Alm.Irman / Dahri haryati (ayah/ibu)</li>
+              <li>Irfandi agusta putra, s.pd (adik)</li>
+              <li>Aditia novirman (adit)</li>
+              <li>Bismil khonesti khairani (adik)</li>
+              <li>Ramaida s.pd / Asril halim (bundo/ papa)</li>
+              <li>Afrimurni /yusri (mak angah/pak angah)</li>
+              <li>Ratnawati / alm john heri (incim/om)</li>
+              <li>Yurnida/ zariawati zarwan (celok/om)</li>
+              <li>juni partriza/ tomi wahyudi (unang/om)</li>
+              <li>sustia nove linda/maulana makmun (cak ani /pak acik)</li>
+              <li>Desi natallia,s.kom (sepupu)</li>
+              <li>Rendi andika putra,S.Kom/Lany pertiwi,Amd (sepupu/ipar)</li>
+              <li>rindha putri triyuma,S.sn,M.sn (sepupu)</li>
+              <li>meylani deka yusri,S.Pd / restu maulid,S.Pd ( sepupu/ ipar)</li>
+              <li>yora Yunita putri,S.Kom (sepupu)</li>
+              <li>widi deska rama (sepupu)</li>
+              <li>yulia yunita putri, S.M (sepupu)</li>
+              <li>Aditia novirman (sepupu)</li>
+              <li>M.fabian wahyudi (sepupu)</li>
+              <li>Habil harpama putra (sepupu)</li>
+              <li>Trivaldo putra (sepupu)</li>
+              <li>Duratun husna Nabillah (sepupu)</li>
+              <li>Callysta queennaya patomi (sepupu)</li>
+              <li>Abdul rahman alghani (sepupu)</li>
+              <li>M.Arya guna patomi (sepupu)</li>
+            </ol>
+          </div>
+          {/* Keluarga Wanita */}
+          <div className="flex-1">
+            <div className="text-lg md:text-xl font-bold serif mb-2 text-white text-center md:text-left">Keluarga Besar Mempelai Wanita</div>
+            <div className="text-sm md:text-base text-gray-300 mb-3 text-center md:text-left">Dengan hormat, turut mengundang keluarga besar berikut:</div>
+            <ol className="list-decimal list-inside text-base font-serif text-gray-300 pl-2 space-y-1 mb-6">
+              <li>Syamsudin/Rosliyeti (Nenek/kakek)</li>
+              <li>Zainal /Reni Susmita (Ayah/ibu)</li>
+              <li>Almh. Sutra Geni, S. pd (kakak)</li>
+              <li>Rozi Sunaldi /Reza Putri Yolasari (Abang/ipar)</li>
+              <li>Maria Sofiana/Fauzi (Ante/Apak)</li>
+              <li>Suandi/Dela (Ucu/Ante)</li>
+              <li>Yulia ELita/Bobi Chandra (Ante/Apak)</li>
+              <li>Yulia Eka Murni/Robi (Ante/Apak)</li>
+              <li>Romi /Ena (Ucu/Ante)</li>
+              <li>Roki /Ires (Aciak /ante)</li>
+              <li>Bobi Yudi darma(Aciak)</li>
+              <li>Sakinah Nur mardhiyah (Sepupu)</li>
+              <li>Nayang kenzi (Sepupu)</li>
+              <li>Muhammad Alfatih (sepupu)</li>
+              <li>arcelino Pratama (sepupu)</li>
+              <li>Asyifa meitul Hasanah (Sepupu)</li>
+              <li>Felicia (Sepupu)</li>
+              <li>Ghufran Rozadi Alfarizqi (keponakan)</li>
+              <li>Fazia (keponakan)</li>
+              <li>Shanum Anbita Ramadhani (Sepupu)</li>
+              <li>Zeyga Alvogandro (sepupu)</li>
+              <li>Zhafran (sepupu)</li>
+              <li>Zio (sepupu)</li>
+            </ol>
+          </div>
         </div>
-        {/* Kanan: Teks penutup */}
-        <div className="flex-1 flex flex-col justify-center items-center bg-[#1E1E1E] p-8 md:p-12 gap-8 text-white">
-          {/* Ucapan Terima Kasih */}
-          <div className="text-base md:text-lg font-serif text-gray-200 text-center max-w-lg">
+        {/* Foto & Penutup */}
+        <div className="flex flex-col items-center mt-8">
+          <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-white mb-6 shadow-lg">
+            <img src="/images/slide1.jpeg" alt="Pasangan di pantai" className="w-full h-full object-cover object-center" />
+          </div>
+          <div className="text-base md:text-lg font-serif text-gray-200 text-center max-w-lg mb-4">
             Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila, Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami.<br />
             Terima kasih atas kehadiran dan doa restunya.
           </div>
-          {/* Daftar Tamu */}
-          <div className="w-full">
-            <div className="text-lg md:text-xl font-bold serif mb-2 text-white">Turut Mengundang:</div>
-            <ul className="list-disc list-inside text-base font-serif text-gray-300 pl-2">
-              <li>Keluarga Besar Bapak Irman</li>
-              <li>Keluarga Besar Zainal</li>
-            
-            </ul>
-          </div>
-          {/* Ucapan Penutup & Logo */}
-          <div className="flex flex-col items-center mt-4">
-            <div className="text-3xl md:text-5xl font-bold serif tracking-wide mb-4">Terima Kasih</div>
-            <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center">
-              <span className="text-2xl md:text-3xl font-bold tracking-widest text-white">G&S</span>
-            </div>
+          <div className="text-3xl md:text-5xl font-bold serif tracking-wide mb-4">Terima Kasih</div>
+          <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center">
+            <span className="text-2xl md:text-3xl font-bold tracking-widest text-white">G&S</span>
           </div>
         </div>
       </div>
