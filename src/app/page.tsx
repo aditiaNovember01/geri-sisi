@@ -127,7 +127,7 @@ function Cover({ onOpen }: { onOpen: () => void }) {
     >
       {/* Background gambar */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <img src="/images/bg2.jpeg" alt="background" className="object-cover w-full h-full" style={{ filter: 'brightness(0.7) blur(1px)' }} />
+        <img src="/images/bg.jpeg" alt="background" className="object-cover w-full h-full" style={{ filter: 'brightness(0.7) blur(1px)' }} />
       </div>
       {/* Overlay gradasi */}
       <div className="absolute inset-0 w-full h-full z-10 bg-gradient-to-b from-white/80 via-white/60 to-[#f8f5f1]/80" />
