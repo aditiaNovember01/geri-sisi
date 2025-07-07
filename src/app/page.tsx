@@ -777,7 +777,7 @@ function ClosingSection() {
               <li>Ratnawati / alm john heri (incim/om)</li>
               <li>Yurnida/ zariawati zarwan (celok/om)</li>
               <li>juni partriza/ tomi wahyudi (unang/om)</li>
-              <li>sustia nove linda/maulana makmun (cak ani /pak acik)</li>
+              <li>sustia nova linda/maulana makmun (cak ani /pak acik)</li>
               <li>Desi natallia,s.kom (sepupu)</li>
               <li>Rendi andika putra,S.Kom/Lany pertiwi,Amd (sepupu/ipar)</li>
               <li>rindha putri triyuma,S.sn,M.sn (sepupu)</li>
