@@ -123,19 +123,20 @@ function Cover({ onOpen }: { onOpen: () => void }) {
         <img src="/images/rsvp.jpeg" alt="background" className="object-cover w-full h-full" />
       </div>
       {/* Semua konten utama di atas overlay */}
-      <div className="relative z-40 flex flex-col items-center w-full h-full justify-end pb-12">
+      <div className="relative z-40 flex flex-col items-center w-full">
         {/* Ornamen floral kiri atas */}
         <svg className="absolute left-4 top-4 w-16 h-16 z-30 opacity-70" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
         {/* Ornamen floral kanan bawah */}
         <svg className="absolute right-4 bottom-4 w-16 h-16 z-30 opacity-70 rotate-180" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
-        {/* Judul dan tombol di bawah */}
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2 animate-fade-in font-playfair text-[#5c4634]" data-aos="fade-up" data-aos-delay="200">
-          Geri & Sisi
-        </h1>
+        {/* Foto pasangan */}
+       
+        {/* Judul dan tombol */}
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2 animate-fade-in" data-aos="fade-up" data-aos-delay="200" style={{ color: '#5c4634' }}>Geri & Sisi</h1>
         <p className="text-lg text-[#7c6650] max-w-xl mx-auto mb-4 animate-fade-in" data-aos="fade-up" data-aos-delay="300">
-          Kepada Yth. <span className="font-bold uppercase">{namaTamu ? namaTamu : 'Bapak/Ibu/Saudara/i'}</span>,<br />
+          Kepada Yth. <span className="font-bold" style={{ textTransform: 'uppercase' }}>{namaTamu ? namaTamu : 'Bapak/Ibu/Saudara/i'}</span>,<br />
           Kami mengundang Anda untuk hadir dalam acara pernikahan kami
         </p>
+        <span className="block text-xl font-serif font-semibold mb-8 animate-fade-in" style={{ color: '#b08968', textShadow: '0 1px 8px #fff8' }} data-aos="fade-up" data-aos-delay="400"></span>
         <button
           onClick={handleOpen}
           className="px-10 py-4 bg-[#5c4634] text-white rounded-full shadow-lg font-bold text-lg transition duration-400 ease-in-out transform hover:scale-105 hover:bg-[#3e2d1a] focus:outline-none animate-zoom-in"
