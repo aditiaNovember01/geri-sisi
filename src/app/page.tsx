@@ -124,11 +124,6 @@ function Cover({ onOpen }: { onOpen: () => void }) {
       />
       {/* Overlay gelap tipis agar teks lebih terbaca */}
       <div className="absolute inset-0 bg-black/30" />
-      {/* Ornamen floral kiri atas */}
-      <svg className="absolute left-4 top-4 w-16 h-16 z-30 opacity-70" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
-      {/* Ornamen floral kanan bawah */}
-      <svg className="absolute right-4 bottom-4 w-16 h-16 z-30 opacity-70 rotate-180" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
-      {/* Konten di kiri bawah */}
       <div className="absolute bottom-12 left-8 z-40 text-left max-w-[80vw]">
         {/* Foto kecil bulat di atas judul */}
      
