@@ -103,7 +103,6 @@ function Cover({ onOpen }: { onOpen: () => void }) {
   const [hide, setHide] = useState(false);
   const [namaTamu, setNamaTamu] = useState('');
   useEffect(() => {
-    // Ambil nama tamu dari query string
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       setNamaTamu(params.get('to') || '');
@@ -114,35 +113,31 @@ function Cover({ onOpen }: { onOpen: () => void }) {
     setTimeout(onOpen, 400);
   };
   return (
-    <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-[#f8f5f1] via-[#f7f0e9] to-[#e8d7cc] transition-opacity duration-400 ease-in-out ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
-      style={{ minHeight: "100dvh", padding: '2rem' }}
-    >
+    <div className={`fixed inset-0 z-50 min-h-screen w-full transition-opacity duration-400 ease-in-out ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+      style={{ minHeight: "100dvh" }}>
       {/* Background gambar */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <img src="/images/rsvp.jpeg" alt="background" className="object-cover w-full h-full" />
-      </div>
-      {/* Semua konten utama di atas overlay */}
-      <div className="relative z-40 flex flex-col items-center w-full">
-        {/* Ornamen floral kiri atas */}
-        <svg className="absolute left-4 top-4 w-16 h-16 z-30 opacity-70" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
-        {/* Ornamen floral kanan bawah */}
-        <svg className="absolute right-4 bottom-4 w-16 h-16 z-30 opacity-70 rotate-180" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
-        {/* Foto pasangan */}
-       
-        {/* Judul dan tombol */}
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2 animate-fade-in" data-aos="fade-up" data-aos-delay="200" style={{ color: '#5c4634' }}>Geri & Sisi</h1>
-        <p className="text-lg text-[#7c6650] max-w-xl mx-auto mb-4 animate-fade-in" data-aos="fade-up" data-aos-delay="300">
-          Kepada Yth. <span className="font-bold" style={{ textTransform: 'uppercase' }}>{namaTamu ? namaTamu : 'Bapak/Ibu/Saudara/i'}</span>,<br />
+      <img
+        src="/images/rsvp.jpeg"
+        alt="background"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: 'center' }}
+      />
+      {/* Overlay gelap tipis agar teks lebih terbaca */}
+      <div className="absolute inset-0 bg-black/30" />
+      {/* Ornamen floral kiri atas */}
+      <svg className="absolute left-4 top-4 w-16 h-16 z-30 opacity-70" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
+      {/* Ornamen floral kanan bawah */}
+      <svg className="absolute right-4 bottom-4 w-16 h-16 z-30 opacity-70 rotate-180" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
+      {/* Konten di kiri bawah */}
+      <div className="absolute bottom-12 left-8 z-40 text-left max-w-[80vw]">
+        <h1 className="font-violendy text-5xl md:text-7xl text-white drop-shadow-lg mb-2">Geri & Sisi</h1>
+        <p className="text-lg md:text-2xl text-white/90 mb-6 drop-shadow">
+          Kepada Yth. <span className="font-bold uppercase">{namaTamu ? namaTamu : 'Bapak/Ibu/Saudara/i'}</span>,<br />
           Kami mengundang Anda untuk hadir dalam acara pernikahan kami
         </p>
-        <span className="block text-xl font-serif font-semibold mb-8 animate-fade-in" style={{ color: '#b08968', textShadow: '0 1px 8px #fff8' }} data-aos="fade-up" data-aos-delay="400"></span>
         <button
           onClick={handleOpen}
-          className="px-10 py-4 bg-[#5c4634] text-white rounded-full shadow-lg font-bold text-lg transition duration-400 ease-in-out transform hover:scale-105 hover:bg-[#3e2d1a] focus:outline-none animate-zoom-in"
-          style={{ boxShadow: '0 4px 24px #5c463444' }}
-          data-aos="fade-up"
-          data-aos-delay="500"
+          className="px-10 py-4 bg-white/90 text-[#5c4634] rounded-full shadow-lg font-bold text-lg transition hover:bg-white"
         >
           Buka Undangan
         </button>
