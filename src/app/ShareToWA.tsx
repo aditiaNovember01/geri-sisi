@@ -9,6 +9,10 @@ function getNamaFromQuery() {
 
 export default function ShareToWA({ initialNama = "" }: { initialNama?: string }) {
   const [nama, setNama] = useState(initialNama);
+  const [urlUndangan, setUrlUndangan] = useState("");
+  const [pesan, setPesan] = useState("");
+
+  const templatePesan = `Assalamu'alaikum Wr. Wb.\n\nDengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i {nama} untuk menghadiri pernikahan kami:\n\nGery & Sisi\nJumat, 1 Agustus 2025\n\nUntuk informasi lebih lanjut, silakan buka undangan digital kami di:\n{url}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.`;
 
   useEffect(() => {
     if (!initialNama) {
@@ -16,15 +20,19 @@ export default function ShareToWA({ initialNama = "" }: { initialNama?: string }
     }
   }, [initialNama]);
 
-  const templatePesan = `Assalamu'alaikum Wr. Wb.\n\nDengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i {nama} untuk menghadiri pernikahan kami:\n\nGery & Sisi\nJumat, 1 Agustus 2025\n\nUntuk informasi lebih lanjut, silakan buka undangan digital kami di:\n{url}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.`;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUrlUndangan(`${window.location.origin}/?to=${encodeURIComponent(nama)}`);
+    }
+  }, [nama]);
 
-  const urlUndangan = typeof window !== "undefined"
-    ? `${window.location.origin}/?to=${encodeURIComponent(nama)}`
-    : "";
-
-  const pesan = templatePesan
-    .replace("{nama}", nama ? `*${nama.toUpperCase()}*` : "*BAPAK/IBU/SAUDARA/I*")
-    .replace("{url}", urlUndangan);
+  useEffect(() => {
+    setPesan(
+      templatePesan
+        .replace("{nama}", nama ? `*${nama.toUpperCase()}*` : "*BAPAK/IBU/SAUDARA/I*")
+        .replace("{url}", urlUndangan)
+    );
+  }, [nama, urlUndangan]);
 
   const handleShare = () => {
     const waUrl = `https://wa.me/?text=${encodeURIComponent(pesan)}`;
