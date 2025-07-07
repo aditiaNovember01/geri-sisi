@@ -117,7 +117,7 @@ function Cover({ onOpen }: { onOpen: () => void }) {
       style={{ minHeight: "100dvh" }}>
       {/* Background gambar */}
       <img
-        src="/images/rsvp.jpeg"
+        src="/images/bg.jpeg"
         alt="background"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: 'center' }}
@@ -130,6 +130,8 @@ function Cover({ onOpen }: { onOpen: () => void }) {
       <svg className="absolute right-4 bottom-4 w-16 h-16 z-30 opacity-70 rotate-180" viewBox="0 0 64 64" fill="none"><path d="M32 2C36 18 46 18 62 32C46 46 36 46 32 62C28 46 18 46 2 32C18 18 28 18 32 2Z" stroke="#b08968" strokeWidth="2" fill="#f7f0e9"/></svg>
       {/* Konten di kiri bawah */}
       <div className="absolute bottom-12 left-8 z-40 text-left max-w-[80vw]">
+        {/* Foto kecil bulat di atas judul */}
+     
         <h1 className="font-violendy text-5xl md:text-7xl text-white drop-shadow-lg mb-2">Geri & Sisi</h1>
         <p className="text-lg md:text-2xl text-white/90 mb-6 drop-shadow">
           Kepada Yth. <span className="font-bold uppercase">{namaTamu ? namaTamu : 'Bapak/Ibu/Saudara/i'}</span>,<br />
@@ -137,7 +139,7 @@ function Cover({ onOpen }: { onOpen: () => void }) {
         </p>
         <button
           onClick={handleOpen}
-          className="px-10 py-4 bg-white/90 text-[#5c4634] rounded-full shadow-lg font-bold text-lg transition hover:bg-white"
+          className="px-10 py-4 bg-transparent border-2 border-white text-white rounded-full shadow font-sans font-semibold text-lg transition hover:bg-white/20 hover:text-white"
         >
           Buka Undangan
         </button>
