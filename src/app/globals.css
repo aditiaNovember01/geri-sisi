@@ -139,3 +139,10 @@ body {
     opacity: 0.1;
   }
 }
+
+@font-face {
+  font-family: 'ViolendyQishega';
+  src: url('/fonts/ViolendyQishega.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

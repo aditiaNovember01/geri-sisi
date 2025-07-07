@@ -38,6 +38,9 @@ module.exports = {
         '102': '1.02',
         '105': '1.05',
       },
+      fontFamily: {
+        violendy: ['ViolendyQishega', 'cursive'],
+      },
     },
   },
   plugins: [],
