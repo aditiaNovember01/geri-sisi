@@ -346,7 +346,7 @@ export default function Home() {
                   <img src="/images/2.jpeg" alt="Galeri 2" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src="/images/3.jpeg" alt="Galeri 3" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
+                  <img src="/images/b.jpeg" alt="Galeri 3" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
                 </SwiperSlide>
                 <SwiperSlide>
                   <img src="/images/4.jpeg" alt="Galeri 4" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
