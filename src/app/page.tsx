@@ -3,12 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Playfair_Display } from "next/font/google";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { createClient } from '@supabase/supabase-js';
+import Gallery from "./Gallery";
 
 const sections = [
   { id: "couple", label: <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg> },
@@ -298,56 +294,7 @@ export default function Home() {
           </section>
 
           {/* Section Galeri Foto - Image Slider */}
-          <section className="w-full py-16 px-2 bg-[#d9c7bb] flex flex-col items-center" data-aos="fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center serif text-[#5c4634]">Galeri Foto</h2>
-            <div className="w-full max-w-5xl">
-              <Swiper
-                spaceBetween={24}
-                slidesPerView={1.2}
-                breakpoints={{
-                  640: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                }}
-                loop={true}
-                autoplay={{ delay: 2500, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
-                modules={[Autoplay, Pagination]}
-                className="pb-8"
-              >
-                <SwiperSlide>
-                  <img src="/images/1.jpeg" alt="Galeri 1" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/2.jpeg" alt="Galeri 2" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/b.jpeg" alt="Galeri 3" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/4.jpeg" alt="Galeri 4" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/5.jpeg" alt="Galeri 5" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/6.jpeg" alt="Galeri 6" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/7.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/8.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/slide1.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/images/bg.jpeg" alt="Galeri 7" className="h-96 w-auto object-cover rounded-xl shadow-lg transition-all duration-500" />
-                </SwiperSlide>
-              </Swiper>
-              
-            </div>
-          </section>
+          <Gallery />
 
           {/* Section Detail Acara (Akad Nikah & Resepsi) */}
           <section className="w-full py-16 px-2 bg-[#f7f0e9] flex flex-col items-center" data-aos="fade-up">
@@ -486,6 +433,8 @@ export default function Home() {
 
           {/* Section Closing */}
           <ClosingSection />
+
+          
         </main>
         <footer className="text-center text-xs text-gray-400 py-6">&copy; 2025 AditiaNovirman. Dibuat dengan cinta.</footer>
         {/* Scroll hint animasi panah ke bawah setelah undangan dibuka */}
@@ -762,32 +711,37 @@ function ClosingSection() {
             <div className="text-lg md:text-xl font-bold serif mb-2 text-white text-center md:text-left">Keluarga Besar Mempelai Pria</div>
             <div className="text-sm md:text-base text-gray-300 mb-3 text-center md:text-left">Dengan hormat, turut mengundang keluarga besar berikut:</div>
             <ol className="list-decimal list-inside text-base font-serif text-gray-300 pl-2 space-y-1 mb-6">
-              <li>Alm.Abbas rajo lelo / Almh.Raminis (kakek/nenek)</li>
-              <li>Alm.Irman / Dahri haryati (ayah/ibu)</li>
-              <li>Irfandi agusta putra, s.pd (adik)</li>
-              <li>Aditia novirman (adit)</li>
-              <li>Bismil khonesti khairani (adik)</li>
-              <li>Ramaida s.pd / Asril halim (bundo/ papa)</li>
+              <li>Abbas rajo lelo (Alm) / Raminis (Almh) (kakek/nenek)</li>
+              <li>Ahmid Dt. Bandaro Hitam/Endrawati (Datuak/ipar)</li>
+              <li>Aliambran Gafar/Asna (Uwan/mintuo)</li>
+              <li>Kamli Gatar/Mumi (uwan/mintuo)</li>
+              <li>Ramaida S.Pd / Asril halim (bundo/ papa)</li>
               <li>Afrimurni /yusri (mak angah/pak angah)</li>
-              <li>Ratnawati / alm john heri (incim/om)</li>
-              <li>Yurnida/ zariawati zarwan (celok/om)</li>
-              <li>juni partriza/ tomi wahyudi (unang/om)</li>
-              <li>sustia nova linda/maulana makmun (cak ani /pak acik)</li>
-              <li>Desi natallia,s.kom (sepupu)</li>
-              <li>Rendi andika putra,S.Kom/Lany pertiwi,Amd (sepupu/ipar)</li>
-              <li>rindha putri triyuma,S.sn,M.sn (sepupu)</li>
-              <li>meylani deka yusri,S.Pd / restu maulid,S.Pd ( sepupu/ ipar)</li>
-              <li>yora Yunita putri,S.Kom (sepupu)</li>
-              <li>widi deska rama (sepupu)</li>
-              <li>yulia yunita putri, S.M (sepupu)</li>
-              <li>Aditia novirman (sepupu)</li>
-              <li>M.fabian wahyudi (sepupu)</li>
-              <li>Habil harpama putra (sepupu)</li>
-              <li>Trivaldo putra (sepupu)</li>
-              <li>Duratun husna Nabillah (sepupu)</li>
-              <li>Callysta queennaya patomi (sepupu)</li>
-              <li>Abdul rahman alghani (sepupu)</li>
-              <li>M.Arya guna patomi (sepupu)</li>
+              <li>Ratnawati / john heri (Alm) (incim/om)</li>
+              <li>Yurnida/ wazariati zarwan (celok/om)</li>
+              <li>Juni partriza/ tomi wahyudi (unang/om)</li>
+              <li>Sustia nova linda/maulana makmun (cak ani /pak acik)</li>
+              <li>Irfandi agusta putra, S.Pd (adik)</li>
+              <li>Aditia novirman (adik)</li>
+              <li>Bismil khonesti khairani (adik)</li>
+              <li>Zamzami,S.Pd (Alm) /megawati, S.Pd.I (abang sepupu/ipar)</li>
+              <li>Eni suswita,S.Pd / Nurman,S.H (kakak sepupu/ipar)</li>
+              <li>Nurmeli / yasri (kakak sepupu/ ipar)</li>
+              <li>M.Hasbi / susila yenti,A.Md.kep (abang sepupu/ipar)</li>
+              <li>Desi natallia,s.kom (kakak sepupu)</li>
+              <li>Rendi andika putra,S.Kom/Lany pertiwi,A.Md (abang sepupu/ipar)</li>
+              <li>Rindha putri triyuma,S.sn,M.sn (kakak sepupu)</li>
+              <li>Meylani deka yusri,S.Pd / restu maulid,S.Pd (adik  sepupu/ ipar)</li>
+              <li>Yora Yunita putri,S.Kom (adik sepupu)</li>
+              <li>Widi deska rama (adik sepupu)</li>
+              <li>Yulia yunita putri, S.M (adik sepupu)</li>
+              <li>M.fabian wahyudi (adik sepupu)</li>
+              <li>Habil harpama putra (adik sepupu)</li>
+              <li>Trivaldo putra (adik sepupu)</li>
+              <li>Duratun husna Nabillah (adik sepupu)</li>
+              <li>Callysta queennaya patomi (adik sepupu)</li>
+              <li>Abdul rahman alghani (adik sepupu)</li>
+              <li>M.Arya guna patomi (adik sepupu)</li>
             </ol>
           </div>
           {/* Keluarga Wanita */}
